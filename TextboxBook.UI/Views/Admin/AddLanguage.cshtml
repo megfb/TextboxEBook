@@ -1,0 +1,22 @@
+﻿@model TextboxBook.UI.Models.LanguageAddviewModel
+@{
+    ViewData["Title"] = "AddLanguage";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto border rounded">
+            <form asp-controller="admin" asp-action="AddLanguage" method="post" class=" my-3">
+                <div class="form-group">
+                    <input type="text" class="form-control" asp-for="Language.Name" placeholder="Language" />
+                    <span asp-validation-for="Language.Name"></span>
+                </div>
+                <div class="text-right">
+                    <a asp-action="listlanguage" class="btn btn-info rounded-pill col-md-3">Languages</a>
+                    <button class="btn btn-success rounded-pill col-md-3">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

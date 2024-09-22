@@ -1,0 +1,20 @@
+﻿@model TextboxBook.UI.Models.RoleUpdateViewModel
+@{
+    ViewData["Title"] = "UpdateRole";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<div class="container">
+    <form asp-controller="role" class="border rounded col-md-6 mx-auto p-3" asp-action="updaterole" method="post">
+        <div class="form-group">
+            <input type="text" class="col-md-12 form-control" asp-for="role.Name" />
+            <span asp-validation-for="role.Name"></span>
+        </div>
+        <div class="form-group text-right">
+            <input type="hidden" asp-for="role.Id" />
+            <a asp-action="rolelist" class="btn btn-info rounded-pill col-md-2">Back</a>
+            <button class="btn btn-success rounded-pill col-md-2">Update</button>
+        </div>
+    </form>
+
+</div>

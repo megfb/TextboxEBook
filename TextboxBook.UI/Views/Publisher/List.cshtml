@@ -1,0 +1,39 @@
+﻿@model TextboxBook.UI.Models.PublisherListViewModel
+
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <div class="row">
+        <div class=" table-responsive mx-auto">
+
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col" class="listebasligi text-center">Name</th>
+                        <th scope="col" class="listebasligi text-center">Informations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var publisherList in Model.Publisher)
+                    {
+                        <tr class="text-center ">
+                            <td class="align-middle">
+                                <p class="listeyazisi text-center">@publisherList.Name</p>
+                            </td>
+                            <td class="align-middle">
+                                <a asp-controller="publisher" asp-action="Detail" asp-route-Id="@publisherList.Id" class="btn btn-xs btn-primary"> Details</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+

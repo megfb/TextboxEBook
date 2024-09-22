@@ -1,0 +1,99 @@
+﻿@model TextboxBook.UI.Models.BookListViewModel
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/_Layout.cshtml";
+    <link rel="stylesheet" type="text/css" href="~/css/BookList.css" />
+
+}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-2">
+            @await Component.InvokeAsync("CategoryList")
+        </div>
+        <div class="col-md-10 mx-auto">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col" class="listebasligi text-center">Id</th>
+                        <th scope="col" class="listebasligi text-center">İmg</th>
+                        <th scope="col" class="listebasligi text-center">Book Name</th>
+                        <th scope="col" class="listebasligi text-center">Author</th>
+                        <th scope="col" class="listebasligi text-center">Category</th>
+                        <th scope="col" class="listebasligi text-center">Year</th>
+                        <th scope="col" class="listebasligi text-center">Publisher</th>
+                        <th scope="col" class="listebasligi text-center">Languages</th>
+                        <th scope="col" class="listebasligi text-center">Unit Price</th>
+                        <th scope="col" class="listebasligi text-center">Information</th>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("User"))
+                        {
+                            <th scope="col" class="listebasligi text-center">AddtoCart</th>
+
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Book)
+                    {
+                        <tr>
+                            <td class="align-middle">
+                                <p class="listeyazisi">@item.Id</p>
+                            </td>
+                            <td class="align-middle">
+                                <img src="@item.BookImg" width="64" class="img-fluid bookimg" />
+                            </td>
+                            <td class="align-middle">
+                                <p class="listeyazisi text-center">@item.Name</p>
+                            </td>
+                            <td class="align-middle">
+                                <p class="listeyazisi text-center">@item.Author.Name</p>
+                            </td>
+                            <td class="align-middle">
+                                <p class="listeyazisi text-center">@item.Category.Name</p>
+                            </td>
+                            <td class="align-middle">
+                                <p class="listeyazisi text-center">@item.ProductionDate.ToString()</p>
+                            </td>
+                            <td class="align-middle">
+                                <p class="listeyazisi text-center">@item.Publisher.Name</p>
+                            </td>
+                            <td class="align-middle">
+                                <p class="listeyazisi text-center">@item.Language.Name</p>
+                            </td>
+                            <td class="align-middle">
+                                <p class="listeyazisi text-center">@item.UnitPrice.ToString()</p>
+                            </td>
+                            <td class="align-middle">
+                                <a asp-controller="book" asp-action="Detail" asp-route-Id="@item.Id" asp-route-CategoryId="@item.Category.Id" class="btn btn-xs btn-primary col-md-12"> Details</a>
+                            </td>
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("User"))
+                            {
+                                <td class="align-middle">
+                                    <form asp-controller="cart" asp-action="AddCartItem" method="post">
+                                        <input type="hidden" name="Id" value="@item.Id" />
+                                        <input class="form-control" type="number" name="quantity" value="1" min="1" step="1" />
+                                        <button type="submit" class="btn text-white" style="background-color: #FF8800"> AddToCart</button>
+                                    </form>
+                                </td>
+                            }
+
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="mx-auto">
+            <product-list-pager current-category="@Model.CurrentCategory"
+                                current-page="@Model.CurrentPage"
+                                page-count="@Model.PageCount"
+                                page-size="@Model.PageSize"></product-list-pager>
+        </div>
+    </div>
+
+</div>
+

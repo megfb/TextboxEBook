@@ -1,0 +1,22 @@
+﻿@model TextboxBook.UI.Models.CategoryAddViewModel
+@{
+    ViewData["Title"] = "AddCategory";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<div class="container">
+    <form class="col-md-6 mx-auto border rounded" asp-controller="Admin" asp-action="AddCategory" method="post" enctype="multipart/form-data">
+
+
+        <div class="form-group mt-3">
+            <input asp-for="Category.Name" class="form-control" type="text" placeholder="Book Name" />
+            <span asp-validation-for="Category.Name"></span>
+        </div>
+
+        <div class="ml-auto row col-md-6 mb-3">
+            <a type="button" asp-action="listcategory" class="btn btn-info rounded-pill text-white ml-auto col-md-6">Categories</a>
+
+            <button class="btn btn-success rounded-pill text-white ml-auto col-md-6">Add</button>
+        </div>
+    </form>
+</div>

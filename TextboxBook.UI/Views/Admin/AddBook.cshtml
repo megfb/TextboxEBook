@@ -1,0 +1,68 @@
+﻿@model TextboxBook.UI.Models.BookAddViewModel
+@{
+    ViewData["Title"] = "AddBook";
+    Layout = "~/Views/_Layout.cshtml";
+}
+<div class="container">
+    <form class="col-md-6 mx-auto border rounded" asp-action="AddBook" method="post">
+
+        <div class="form-group mt-3">
+            <input asp-for="Book.BookImg" class="form-control" type="text" placeholder="Img Link" />
+            <span asp-validation-for="Book.BookImg"></span>
+        </div>
+        <div class="form-group mt-3">
+            <input asp-for="Book.Name" class="form-control" type="text" placeholder="Book Name" />
+            <span asp-validation-for="Book.Name"></span>
+
+        </div>
+        <div class="form-group mt-3">
+            <select asp-for="Book.AuthorId" class="form-control"
+                    asp-items="@(new SelectList(Model.Authors,"Id","Name"))"></select>
+            <div class="text-right">
+                <a class="ml-3" asp-action="addauthor">add a new author</a>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <select asp-for="Book.CategoryId" class="form-control"
+                    asp-items="@(new SelectList(Model.Categories,"Id","Name"))"></select>
+            <div class="text-right">
+                <a class="ml-3" asp-action="AddCategory">add a new category</a>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <select asp-for="Book.PublisherId" class="form-control"
+                    asp-items="@(new SelectList(Model.Publishers,"Id","Name"))"></select>
+            <div class="text-right">
+                <a class="ml-3" asp-action="addpublisher">add a new publisher</a>
+
+            </div>
+        </div>
+        <div class="form-group mt-3">
+            <input asp-for="Book.ProductionDate" class="form-control" type="number" placeholder="Production Date" />
+            <span asp-validation-for="Book.ProductionDate"></span>
+
+        </div>
+        <div class="form-group">
+            <select asp-for="Book.LanguageId" class="form-control"
+                    asp-items="@(new SelectList(Model.Languages,"Id","Name"))"></select>
+            <div class="text-right">
+                <a class="ml-3" asp-action="addlanguage">add a new language</a>
+
+            </div>
+        </div>
+        <div class="form-group mt-3">
+            <input asp-for="Book.UnitPrice" class="form-control" placeholder="Unit Price" />
+            <span asp-validation-for="Book.UnitPrice"></span>
+        </div>
+        <div class="form-group mt-3">
+            <input asp-for="Book.Description" class="form-control" type="text" placeholder="Subject" />
+            <span asp-validation-for="Book.Description"></span>
+        </div>
+        <div class="ml-auto row col-md-6 mb-3">
+            <a class="btn btn-info rounded-pill text-white ml-auto col-md-6" asp-action="listbook">Books</a>
+            <button class="btn btn-success rounded-pill text-white ml-auto col-md-6">Add</button>
+        </div>
+    </form>
+</div>

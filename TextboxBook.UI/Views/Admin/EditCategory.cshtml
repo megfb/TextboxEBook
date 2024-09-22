@@ -1,0 +1,26 @@
+﻿@model TextboxBook.UI.Models.CategoryViewModel
+@{
+    ViewData["Title"] = "EditCategory";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 border rounded mx-auto">
+            <form asp-controller="admin" asp-action="editcategory" method="post">
+                <div class="form-group my-3">
+                    <input type="text" class="form-control" asp-for="Category.Name" />
+                    <span asp-validation-for="Category.Name"></span>
+                </div>
+                <div class="text-right mb-3">
+                    <input type="hidden" asp-for="Category.Id" />
+                    <a class="btn btn-info col-md-3 rounded-pill" asp-action="listcategory">Back</a>
+                    <input type="submit" value="Update" class="btn btn-success rounded-pill text-white col-md-3">
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

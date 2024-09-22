@@ -1,0 +1,53 @@
+﻿@model TextboxBook.UI.Models.CategoryListViewModel
+@{
+    ViewData["Title"] = "ListCategory";
+    Layout = "~/Views/_Layout.cshtml";
+    <link rel="stylesheet" type="text/css" href="~/css/CategoryList.css" />
+
+}
+
+<div class="container my-3">
+    <div class="row">
+        <div class="mx-auto table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col" class="listebasligi text-center">Id</th>
+                        <th scope="col" class="listebasligi text-center">Category</th>
+                        <th scope="col" class="listebasligi text-center">Books</th>
+                        <th scope="col" class="listebasligi text-center">Edit</th>
+                        <th scope="col" class="listebasligi text-center">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var categoryList in Model.categoryList)
+                    {
+                        <tr class="text-center align-middle">
+                            <td>
+                                <p class="listeyazisi">@categoryList.Id</p>
+                            </td>
+                            <td>
+                                <p>@categoryList.Name</p>
+                            </td>
+                            <td>
+                                <a asp-action="listbook" asp-route-Category="@categoryList.Id" class="btn btn-primary ">Books</a>
+
+                            </td>
+                            <td>
+                                <a type="button" class="btn btn-warning" asp-action="editcategory" asp-route-id="@categoryList.Id">Edit</a>
+                            </td>
+                            <td>
+                                <a type="button" class="btn btn-danger" asp-action="deletecategory" asp-route-Id="@categoryList.Id">Delete</a>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="ml-auto text-right mt-3">
+                <a type="button" asp-action="addCategory" class="btn btn-info">New Category</a>
+
+            </div>
+        </div>
+    </div>
+</div>

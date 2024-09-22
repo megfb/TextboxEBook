@@ -1,0 +1,30 @@
+﻿.padding-0 {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+a.w3-bar-item {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.9;
+    font-weight: 300
+}
+
+    a.w3-bar-item:hover {
+        background-color: #FF8800;
+        border-radius: 10px;
+        border-color: white;
+        text-decoration: none
+    }
+
+    a.w3-bar-item:active {
+        background-color: #ffab00
+    }
+
+.w3-te {
+    background-color: #FF8800
+}
+
+button.w3-te {
+    color: white
+}

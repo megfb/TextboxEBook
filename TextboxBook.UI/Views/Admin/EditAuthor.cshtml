@@ -1,0 +1,51 @@
+﻿@model TextboxBook.UI.Models.AuthorViewModel
+@{
+    ViewData["Title"] = "EditAuthor";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+            <form class=" mt-5  mx-auto" asp-controller="Admin" asp-action="editauthor" method="post">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group text-center">
+                            <img class="img-fluid" src="@Model.Author.AuthorImg" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-9">
+                        <div class="form-group">
+                            <input asp-for="Author.AuthorImg" class="form-control" type="text" placeholder="image link" />
+                            <span asp-validation-for="Author.AuthorImg"></span>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="Author.Name" class="form-control" type="text" placeholder="Full Name" />
+                            <span asp-validation-for="Author.Name"></span>
+
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="Author.BirthDate" class="form-control" type="text" placeholder="Birth Year" />
+                            <span asp-validation-for="Author.BirthDate"></span>
+                        </div>
+                        <div class="form-group">
+                            <textarea asp-for="Author.Biography" class="form-control" id="exampleFormControlTextarea1" rows="3" type="text" />@Model.Author.Biography</textarea>
+                            <span asp-validation-for="Author.Biography"></span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="text-right">
+                    <input type="hidden" asp-for="Author.Id" />
+                    <a class="btn btn-info rounded-pill col-md-3" asp-action="listauthor">Back</a>
+                    <input type="submit" value="Update" class="btn btn-success rounded-pill col-md-3">
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

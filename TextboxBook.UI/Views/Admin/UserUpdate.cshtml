@@ -1,0 +1,61 @@
+﻿@model TextboxBook.UI.Models.UserEditViewModel
+@{
+    ViewData["Title"] = "UserUpdate";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<div class="container">
+    <form class="col-md-8 mx-auto border rounded-lg p-3" asp-controller="admin" asp-action="userupdate" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="GetUser.Id">Id:</label>
+            <p>@Model.GetUser.Id</p>
+            <small class="form-text text-muted">Cannot change</small>
+        </div>
+        <div class="form-group">
+            <label asp-for="Role">Roles</label>
+            <select asp-for="Role" class="form-control" asp-items="@(new SelectList(Model.Roles,"Name"))"></select>
+            <span asp-validation-for="Role"></span>
+
+            <small class="form-text text-muted" style="display:inline">Current roles:</small>
+            <ul style="display:inline">
+                @foreach (var roleList in Model.UserRoles)
+                {
+                    <li style="display:inline" class="form-text text-muted"><small><u>@roleList</u></small></li>
+                }
+            </ul>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="GetUser.Email">E-Mail:</label>
+            <input type="email" asp-for="@Model.GetUser.Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <span asp-validation-for="GetUser.Email"></span>
+
+        </div>
+        <div class="form-group">
+            <label asp-for="GetUser.Name">Name:</label>
+            <input asp-for="GetUser.Name" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="GetUser.Surname">Surname:</label>
+            <input asp-for="GetUser.Surname" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="GetUser.Age">Age:</label>
+            <input asp-for="GetUser.Age" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="GetUser.GenderId">Gender:</label>
+            <select asp-for="GetUser.GenderId" class="form-control" asp-items="@(new SelectList(Model.Gender,"Id","Name"))"></select>
+        </div>
+        <div class="form-group">
+            <label asp-for="GetUser.CountryId">Country:</label>
+            <select asp-for="GetUser.CountryId" class="form-control" asp-items="@(new SelectList(Model.Country,"Id","Name"))"></select>
+        </div>
+        <div class="text-right">
+            <input type="hidden" asp-for="GetUser.Id" />
+            <a asp-action="userlist" class="btn btn-info rounded-pill col-md-3">Back</a>
+            <input type="submit" class="btn btn-success rounded-pill col-md-3" value="Update" />
+        </div>
+    </form>
+</div>
+

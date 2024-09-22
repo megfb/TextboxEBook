@@ -1,0 +1,35 @@
+﻿p.basliktext {
+    font-family: 'Open Sans', sans-serif;
+    font-size:26px;
+    font-weight:400;
+    text-align:center
+
+}
+div.baslik{
+    margin:auto
+}
+div.yeniurun{
+    margin:auto;
+    border-radius:25px
+
+}
+
+p.urunadi {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    color:black
+
+}
+button.btn-xs{
+    border-radius:10px
+}
+a.btn {
+    border-radius: 10px
+}
+div.urundiv {
+    transition: transform .3s 
+}
+    div.urundiv:hover {
+        -webkit-transform: translateY(-20px);
+    }

@@ -1,0 +1,63 @@
+﻿@model TextboxBook.UI.Models.UserDetailViewModel
+@{
+    ViewData["Title"] = "UserDetail";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<div class="container my-5">
+    <div class="row">
+
+
+        <div class="col-md-6 mx-auto border rounded-lg p-5">
+            <div class="row border-bottom">
+                <label asp-for="User.Id" class="d-inline"><b>Id:</b></label>
+                <label asp-for="User.Id">@Model.User.Id</label>
+            </div>
+            <div class="row border-bottom">
+                <label asp-for="Roles" class="d-inline"><b>Roles:</b></label>
+                <ul>
+                    @foreach (var roleList in Model.Roles)
+                    {
+                        <li>@roleList</li>
+                    }
+                </ul>
+
+            </div>
+
+            <div class="row border-bottom">
+                <label asp-for="User.Email" class="d-inline"><b>E-Mail:</b></label>
+                <label asp-for="User.Email">@Model.User.Email</label>
+            </div>
+            <div class="row border-bottom">
+                <label asp-for="User.Name" class="d-inline"><b>Name:</b></label>
+                <label asp-for="User.Name">@Model.User.Name</label>
+            </div>
+            <div class="row border-bottom">
+                <label asp-for="User.Surname" class="d-inline"><b>Surname:</b></label>
+                <label asp-for="User.Surname">@Model.User.Surname</label>
+            </div>
+            <div class="row border-bottom">
+                <label asp-for="User.Age" class="d-inline"><b>Age:</b></label>
+                <label asp-for="User.Age">@Model.User.Age</label>
+            </div>
+            <div class="row border-bottom">
+                <label asp-for="User.GenderId" class="d-inline"><b>Gender:</b></label>
+                <label asp-for="User.GenderId">@Model.User.Gender.Name</label>
+            </div>
+            <div class="row border-bottom">
+                <label asp-for="User.CountryId" class="d-inline"><b>Country:</b></label>
+                <label asp-for="User.CountryId">@Model.User.Country.Name</label>
+            </div>
+            <div class="row mt-1">
+                <a asp-action="userlist" class="btn btn-info rounded-pill col-md-3 ml-auto">Users</a>
+            </div>
+
+        </div>
+
+
+
+
+
+
+    </div>
+</div>

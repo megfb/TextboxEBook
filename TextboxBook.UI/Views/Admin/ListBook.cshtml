@@ -1,0 +1,94 @@
+﻿@model TextboxBook.UI.Models.BookListViewModel
+
+
+@{
+    ViewData["Title"] = "ListBook";
+    Layout = "~/Views/_Layout.cshtml";
+    <link rel="stylesheet" type="text/css" href="~/css/BookList.css" />
+}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-2">
+            @await Component.InvokeAsync("CategoryList")
+            <div class="col-md-12 my-3">
+                <a type="button" asp-action="addbook" class="btn btn-info">New Book</a>
+            </div>
+        </div>
+        <div class="col-md-10 mx-auto">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col" class="listebasligi text-center">Id</th>
+                        <th scope="col" class="listebasligi text-center">İmg</th>
+                        <th scope="col" class="listebasligi text-center">Book Name</th>
+                        <th scope="col" class="listebasligi text-center">Author</th>
+                        <th scope="col" class="listebasligi text-center">Category</th>
+                        <th scope="col" class="listebasligi text-center">Year</th>
+                        <th scope="col" class="listebasligi text-center">Publisher</th>
+                        <th scope="col" class="listebasligi text-center">Languages</th>
+                        <th scope="col" class="listebasligi text-center">Unit Price</th>
+                        <th scope="col" class="listebasligi text-center">Information</th>
+                        <th scope="col" class="listebasligi text-center">Edit</th>
+                        <th scope="col" class="listebasligi text-center">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Book)
+                    {
+                        <tr>
+                            <td class="align-middle">
+                                <p class="listeyazisi">@item.Id</p>
+                            </td>
+                            <td class="align-middle">
+                                <img src="@item.BookImg" width="64" class="img-fluid bookimg" />
+                            </td>
+                            <td class="align-middle">
+                                <p class="listeyazisi text-center">@item.Name</p>
+                            </td>
+                            <td class="align-middle">
+                                <p class="listeyazisi text-center">@item.Author.Name</p>
+                            </td>
+                            <td class="align-middle">
+                                <p class="listeyazisi text-center">@item.Category.Name</p>
+                            </td>
+                            <td class="align-middle">
+                                <p class="listeyazisi text-center">@item.ProductionDate</p>
+                            </td>
+                            <td class="align-middle">
+                                <p class="listeyazisi text-center">@item.Publisher.Name</p>
+                            </td>
+                            <td class="align-middle">
+                                <p class="listeyazisi text-center">@item.Language.Name</p>
+                            </td>
+                            <td class="align-middle">
+                                <p class="listeyazisi text-center">@item.UnitPrice.ToString()</p>
+                            </td>
+                            <td class="align-middle">
+                                <a asp-controller="admin" asp-action="detailbook" asp-route-Id="@item.Id" class="btn btn-xs btn-primary col-md-12"> Details</a>
+                            </td>
+                            <td class="align-middle">
+                                <a asp-controller="admin" asp-action="EditBook" asp-route-Id="@item.Id" class="btn btn-xs btn-warning col-md-12"> Edit</a>
+                            </td>
+                            <td class="align-middle">
+                                <a asp-controller="admin" asp-action="DeleteBook" asp-route-Id="@item.Id" class="btn btn-xs btn-danger col-md-12"> Delete</a>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="mx-auto">
+            <product-list-pager current-category="@Model.CurrentCategory"
+                                current-page="@Model.CurrentPage"
+                                page-count="@Model.PageCount"
+                                page-size="@Model.PageSize"></product-list-pager>
+        </div>
+    </div>
+
+</div>

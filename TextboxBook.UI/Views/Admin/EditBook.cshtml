@@ -1,0 +1,71 @@
+﻿@model TextboxBook.UI.Models.BookEditViewModel
+@{
+    ViewData["Title"] = "EditBook";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+            <form class=" mt-5  mx-auto" asp-controller="Admin" asp-action="EditBook" method="post">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group text-center">
+                            <img class="img-fluid" src="@Model.Book.BookImg" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-9">
+                        <div class="form-group">
+                            <input asp-for="Book.BookImg" class="form-control" type="text" placeholder="image link" />
+                            <span asp-validation-for="Book.BookImg"></span>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="Book.Name" class="form-control" type="text" placeholder="Book Name" />
+                            <span asp-validation-for="Book.Name"></span>
+
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="Book.ProductionDate" class="form-control" type="text" placeholder="Production Date" />
+                            <span asp-validation-for="Book.ProductionDate"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <select asp-for="Book.AuthorId" class="form-control"
+                                    asp-items="@(new SelectList(Model.Authors,"Id","Name"))"></select>
+                        </div>
+                        <div class="form-group">
+                            <select asp-for="Book.CategoryId" class="form-control"
+                                    asp-items="@(new SelectList(Model.Categories,"Id","Name"))"></select>
+                        </div>
+                        <div class="form-group">
+                            <select asp-for="Book.PublisherId" class="form-control"
+                                    asp-items="@(new SelectList(Model.Publishers,"Id","Name"))"></select>
+                        </div>
+                        <div class="form-group">
+                            <select asp-for="Book.LanguageId" class="form-control"
+                                    asp-items="@(new SelectList(Model.Languages,"Id","Name"))">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea asp-for="Book.Description" class="form-control" id="exampleFormControlTextarea1" rows="3" type="text" placeholder="Subject" />@Model.Book.Description</textarea>
+                            <span asp-validation-for="Book.Description"></span>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="Book.UnitPrice" class="form-control" type="text" placeholder="Book Name" />
+                            <span asp-validation-for="Book.UnitPrice"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-right">
+                    <input type="hidden" asp-for="Book.Id" />
+                    <a asp-action="listbook" class="btn btn-info col-md-3 rounded-pill">Back</a>
+                    <input type="submit" value="Update" class="btn btn-success col-md-3 rounded-pill">
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

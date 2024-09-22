@@ -1,0 +1,101 @@
+﻿@model TextboxBook.UI.Models.CartModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/_Layout.cshtml";
+    <link rel=" stylesheet" type="text/css" href="~/css/AuthorList.css" />
+
+}
+<div class="container">
+    <div class="row">
+        @if (Model.CartItems.Count > 0)
+        {<div class="table-responsive col-md-8 mx-auto">
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="listebasligi text-center">Img</th>
+                            <th scope="col" class="listebasligi text-center">Name</th>
+                            <th scope="col" class="listebasligi text-center">Price</th>
+                            <th scope="col" class="listebasligi text-center">Quantity</th>
+                            <th scope="col" class="listebasligi text-center">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.CartItems)
+                        {
+                            <tr>
+                                <td class="text-center align-middle">
+                                    <img class="img-fluid" style="max-height:64px" src="@item.Img" />
+                                </td>
+                                <td class="text-center align-middle">
+                                    <p class="listeyazisi">@item.Name</p>
+                                </td>
+                                <td class="text-center align-middle">
+                                    <p class="listeyazisi">@item.Price</p>
+                                </td>
+                                <td class="text-center align-middle">
+                                    <p class="listeyazisi">@item.Quantity</p>
+                                </td>
+                                <td class="text-center align-middle">
+                                    <p class="listeyazisi">@(item.Quantity * item.Price)</p>
+                                </td>
+                                <td class="align-middle">
+                                    <form asp-controller="cart" asp-action="delete" method="post">
+                                        <input type="hidden" name="bookId" value="@item.BookId" />
+                                        <button class="btn btn-danger btn-sm">
+                                            <i class="fa fa-times fa-fw"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-4">
+                <h3 class="listebasligi border-bottom border-top text-center">Cart Summary</h3>
+                <div class="border rounded-lg table-responsive">
+                    <table class="col-md-12">
+                        <tbody>
+                            <tr class="text-right align-middle">
+                                <td class="text-right listeyazisi   ml-auto align-middle col-md-12">
+                                    <b class="listebasligi">Total book fee:</b> @Model.TotalPrice().ToString("c")
+                                </td>
+                            </tr>
+                            <tr class="text-right align-middle">
+                                <td class="text-right listeyazisi  ml-auto align-middle col-md-12">
+                                    <b class="listebasligi">Shipping fee:</b> ₺0
+                                </td>
+                            </tr>
+                            <tr class="text-right align-middle">
+                                <td class="text-right listeyazisi   ml-auto align-middle col-md-12">
+                                    <b class="listebasligi">Total:</b> @Model.TotalPrice().ToString("c")
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-right mb-2">
+                        <a asp-controller="book" asp-action="listbook" class="btn btn-info">Continue Shopping</a>
+                        <a asp-controller="order" asp-action="index" class="btn btn-success">Go to Checkout</a>
+                    </div>
+
+                </div>
+
+
+            </div>
+        }
+        else
+        {<div class=" col-md-12 mx-auto">
+                <div class="text-center alert alert-warning">
+                    No product in cart!
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+</div>
+
+
+

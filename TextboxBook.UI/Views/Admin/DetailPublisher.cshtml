@@ -1,0 +1,76 @@
+﻿@model TextboxBook.UI.Models.PublisherDetailViewModel
+@{
+    ViewData["Title"] = "DetailPublisher";
+    Layout = "~/Views/_Layout.cshtml";
+    <link rel="stylesheet" type="text/css" href="~/css/productdetail.css" />
+
+}
+
+<div class="container-fluid my-5">
+    <div class="row">
+
+        <div class="col-md-12">
+            <form class="col-md-4 mt-5 border rounded-lg py-3 mx-auto">
+
+                <div class="col-md-12">
+                    <div class="form-group border-bottom">
+                        <label asp-for="Publisher.Id" class="d-inline"><b>Id:</b></label>
+
+                        <label asp-for="Publisher.Id">@Model.Publisher.Id</label>
+                    </div>
+                    <div class="form-group border-bottom">
+                        <label asp-for="Publisher.Name" class="d-inline"><b>Name:</b></label>
+
+                        <label asp-for="Publisher.Name">@Model.Publisher.Name</label>
+                    </div>
+                    <div class="text-right">
+                        <a type="button" asp-action="listpublisher" value="Back" class="btn btn-info rounded-pill ml-auto col-md-4">Back</a>
+
+                    </div>
+                </div>
+
+
+            </form>
+            <div class="row">
+
+
+
+                <div class="row col-md-8 mx-auto bg-white my-5 rounded-lg border-bottom">
+                    <div class=" baslik mt-3">
+                        <p class="basliktext">Publisher's Books</p>
+                    </div>
+                    <div class="row mx-auto col-md-12 mt-3">
+
+                        @foreach (var books in Model.Publisher.Book)
+                        {
+
+                            <div class="col-md-3 urundiv pb-3">
+                                <div class="col-md-12 mx-auto py-3 yeniurun  bg-white">
+                                    <div class="row col-md-12 mb-3 mx-auto">
+
+                                        <a href="#" class="mx-auto">
+                                            <div class="col-md-12">
+                                                <img src="@books.BookImg" />
+                                                <p class="urunadi">
+                                                    <b class="urunadi">@books.Name</b>
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="row col-md-12 mx-auto">
+                                        <a asp-controller="admin" asp-action="detailbook" asp-route-Id="@books.Id" class="btn rounded-lg text-center btn-xs col-md-6 ml-auto d-block btn-outline-primary">Details</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿@model TextboxBook.UI.Models.PublisherAddViewModel
+@{
+    ViewData["Title"] = "AddPublisher";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto border rounded">
+            <form class="my-3" asp-controller="admin" asp-action="addpublisher" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" asp-for="@Model.Publisher.Name" placeholder="Publisher Name" />
+                    <span asp-validation-for="Publisher.Name"></span>
+                </div>
+                <div class="text-right">
+                    <a type="button" class="btn btn-info rounded-pill col-md-3" asp-action="listpublisher">Publishers</a>
+                    <button type="submit" class="btn btn-success rounded-pill col-md-3">Add</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

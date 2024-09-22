@@ -1,0 +1,21 @@
+﻿@model TextboxBook.UI.Models.RoleAddViewModel
+
+@{
+    ViewData["Title"] = "NewRole";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<form class="col-md-6 mx-auto border rounded" asp-controller="role" asp-action="newrole" method="post" enctype="multipart/form-data">
+
+
+    <div class="form-group mt-3">
+        <input asp-for="RoleName" class="form-control" type="text" placeholder="Role Name" />
+        <span asp-validation-for="RoleName"></span>
+
+    </div>
+
+    <div class="text-right  mb-3">
+        <a asp-action="rolelist" class="btn btn-info rounded-pill text-white col-md-3">Back</a>
+        <button class="btn btn-success rounded-pill text-white col-md-3">Add</button>
+    </div>
+</form>

@@ -1,0 +1,69 @@
+﻿@model TextboxBook.UI.Models.CommentAddViewModel
+
+<div class="container">
+
+    <div id="accordion">
+        <div class="card col-md-10 mx-auto">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Comments
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                    @if (Model.CommentList.Count > 0)
+                    {
+                        <div class="row col-md-12 mx-auto d-block">
+
+                            <div class="col-md-12  rounded-lg mx-auto">
+                                @foreach (var commentList in Model.CommentList)
+                                {
+                                    <div class="row my-3 border-bottom col-md-12 mx-auto">
+                                        <div class="col-md-11 ">
+                                            <p class="text-left">@commentList.CommentName</p>
+                                            <p class="text-right"><b>@commentList.UserName</b><br /><b>@commentList.CommentDate</b></p>
+                                            @*<p class="text-right"></p>*@
+                                            @if (commentList.UserId == Model.getCurrentUser || User.IsInRole("Admin"))
+                                            {
+                                                <div class="text-right">
+                                                    <a asp-controller="comment" asp-action="Delete" asp-route-Id="@commentList.Id" asp-route-bookId="@commentList.BookId" class="btn btn-danger rounded">Delete</a>
+                                                </div>
+                                            }
+
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="row d-block col-md-10 mt-5 mx-auto">
+            <form asp-controller="comment" asp-action="add" class="col-md-12 mx-auto" method="post">
+                <div class="form-group">
+                    <textarea class="form-control" rows="5" asp-for="Comment.CommentName"></textarea>
+                    <span asp-validation-for="Comment.CommentName"></span>
+                </div>
+                
+                <div class="text-right">
+                    <input type="hidden" asp-for="Comment.BookId" />
+                    <input type="hidden" asp-for="Comment.CommentDate" value="@DateTime.Now" />
+                    <button class="btn btn-success col-md-3 rounded-pill">Add</button>
+                </div>
+
+            </form>
+        </div>
+
+
+    }
+
+</div>

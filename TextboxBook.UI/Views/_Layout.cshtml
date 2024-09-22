@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+@using Microsoft.AspNetCore.Http
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="https://kit.fontawesome.com/3b3c6ff0d8.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/lib/twitter-bootstrap/css/bootstrap.css" />
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+</head>
+<body>
+    <ul class="nav justify-content-center">
+        <li>
+            <img height="128" src="~/png/logo.png" />
+        </li>
+    </ul>
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-white">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home/index"><b>Home </b></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" asp-controller="book" asp-action="listbook"><b>Books</b></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" asp-controller="author" asp-action="list"><b>Authors</b></a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" asp-controller="publisher" asp-action="list"><b>Publishers </b></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#"><b>Best Sellers</b></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#"><b>About Us</b></a>
+                </li>
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item active">
+                        <a class="nav-link" asp-controller="account" asp-action="login"><b>Login </b></a>
+                    </li>
+                }
+
+                <li>
+                    <form class="asd" asp-controller="home" asp-action="Search">
+                        <input name="Search" class="arama border" type="text">
+                        <i class="aramaicon fa fa-search"></i>
+                    </form>
+
+                </li>
+                @if (User.Identity.IsAuthenticated && User.IsInRole("User"))
+                {
+                    <li>
+                        <div class="btn-group ">
+                            <a type="button" class="btn" asp-controller="cart" asp-action="index">
+                                <i style="font-size:25px" class="fas fa-shopping-cart"></i>
+                            </a>
+
+                        </div>
+                    </li>
+                }
+
+            </ul>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <ul class="nav justify-content-end ">
+                    <li>
+                        <div class="btn-group dropleft ">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i style="font-size:25px" class="fas fa-user-cog"></i>
+
+                            </button>
+                            <div class="dropdown-menu">
+                                @if (!User.IsInRole("Admin"))
+                                {
+                                    <a class="dropdown-item" asp-controller="profile" asp-action="myprofile">My Profile</a>
+                                    <a class="dropdown-item" asp-controller="profile" asp-action="changepassword">Change Password</a>
+                                    <a class="dropdown-item" asp-controller="order" asp-action="orderHistory">Past Order's</a>
+                                    <a class="dropdown-item" asp-controller="profile" asp-action="commentHistory">Past Comment's</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <div class="dropdown-divider"></div>
+                                }
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a class="dropdown-item" href="/admin/listbook">List of Books</a>
+                                    <a class="dropdown-item" href="/admin/listauthor">List of Authors</a>
+                                    <a class="dropdown-item" href="/admin/listcategory">List of Category</a>
+                                    <a class="dropdown-item" href="/admin/listpublisher">List of Publisher</a>
+                                    <a class="dropdown-item" href="/admin/listlanguage">List of Language</a>
+                                    <a class="dropdown-item" href="/admin/userlist">List of User</a>
+                                    <a class="dropdown-item" href="/role/rolelist">List of Role</a>
+                                    <a class="dropdown-item" href="/admin/commentslist">List of Comment</a>
+                                    <a class="dropdown-item" href="/admin/listorder">List of Order</a>
+                                    <div class="dropdown-divider"></div>
+
+                                }
+                                <a class="dropdown-item" asp-controller="account" asp-action="logout">Logout</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            }
+
+        </div>
+
+    </nav>
+
+    <div>
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                @TempData["Success"]
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+
+        @if (TempData["Alert"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                @TempData["Alert"]
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+
+
+        @RenderBody()
+    </div>
+    <div class="col-md-7 my-5 mx-auto row ">
+
+        <div class="button-wrap mx-auto d-block facebook">
+            <div class="button-inner-wrap">
+                <a href="https://tr-tr.facebook.com/people/Mehmet-Esirk%C4%B1%C5%9F/669602589" target="_blank" style="text-decoration:none">
+                    <i class="icon-facebook inactive"></i>
+                    <i class="icon-facebook active"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="button-wrap dribbble mx-auto d-block">
+            <div class="button-inner-wrap">
+                <a href="https://tr.linkedin.com/in/mehmet-esirk%C4%B1%C5%9F-512226143" target="_blank" style="text-decoration:none">
+                    <i class="icon-linkedin inactive"></i>
+                    <i class="icon-linkedin active"></i>
+                </a>
+            </div>
+        </div>
+        <div class="button-wrap instagram mx-auto d-block">
+            <div class="button-inner-wrap">
+                <a href="https://www.instagram.com/me733017/" target="_blank" style="text-decoration:none">
+                    <i class="icon-instagram inactive"></i>
+                    <i class="icon-instagram active"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="button-wrap  twitter mx-auto d-block">
+            <div class="button-inner-wrap">
+                <a href="https://twitter.com/MehmetEsirkis" target="_blank" style="text-decoration:none">
+                    <i class="icon-twitter inactive"></i>
+                    <i class="icon-twitter active"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="button-wrap  pinterest mx-auto d-block">
+            <div class="button-inner-wrap">
+                <a href="#" style="text-decoration:none">
+                    <i class="icon-pinterest inactive"></i>
+                    <i class="icon-pinterest active"></i>
+                </a>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <footer>
+        <div class="footer" style="background:#fafafa " id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <h4> Textbox E-Trade </h4>
+                    </div>
+                    <div class="col-lg-3 col-sm-2 col-xs-3">
+                        <h3> Contact </h3>
+                        <ul>
+                            <li><a class="email" href="#"> Mehmetesirkis@windowslive.com </a></li>
+                            <li> <p> address line one </p> </li>
+                            <li> <p> address line two </p> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-sm-2 col-xs-3">
+                        <ul>
+                            <li> <h5> <a href="#" style="margin-top: 5em"> ABOUT US</a> </h5></li>
+                            <li> <h5><a href="#"> CURRENT SERIES </a> </h5></li>
+                            <li> <h5><a href="#"> THE HOUSE </a> </h5></li>
+                            <li> <h5><a href="#"> LOOKING BACK </a> </h5></li>
+                        </ul>
+                    </div>
+
+                    <!--/.row-->
+                </div>
+                <!--/.container-->
+            </div>
+            <!--/.footer-->
+
+            <div class="footer-bottom">
+                <div class="container">
+                    <p class="pull-left copyright"> Copyright © Textbox Software 2020. All right reserved. </p>
+
+                </div>
+            </div>
+            <!--/.footer-bottom-->
+        </div>
+    </footer>
+
+
+
+    @*<script src="~/js/addproduct.js" type="text/javascript"></script>*@
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+﻿@model TextboxBook.UI.Models.RoleListViewModel
+@{
+    ViewData["Title"] = "RoleList";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <div class="row">
+        <div class=" table-responsive mx-auto">
+
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col" class="listebasligi text-center">Id</th>
+                        <th scope="col" class="listebasligi text-center">Name</th>
+                        <th scope="col" class="listebasligi text-center">Normalized Name</th>
+                        <th scope="col" class="listebasligi text-center">Concurrency Stamp</th>
+                        <th scope="col" class="listebasligi text-center">Edit</th>
+                        <th scope="col" class="listebasligi text-center">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var roleList in Model.GetRoles)
+                    {
+                        <tr class="text-center ">
+                            <td class="align-middle">
+                                <p class="listeyazisi">@roleList.Id</p>
+                            </td>
+
+                            <td class="align-middle">
+                                <p class="listeyazisi text-center">@roleList.Name</p>
+                            </td>
+                            <td class="align-middle">
+                                <p class="listeyazisi text-center">@roleList.NormalizedName</p>
+                            </td>
+                            <td class="align-middle">
+                                <p class="listeyazisi text-center">@roleList.ConcurrencyStamp</p>
+                            </td>
+                            <td class="align-middle">
+                                <a asp-controller="role" asp-action="UpdateRole" asp-route-Id="@roleList.Id" class="btn btn-xs btn-warning"> Edit</a>
+                            </td>
+                            <td class="align-middle">
+                                <a asp-controller="role" asp-action="deleterole" asp-route-Id="@roleList.Id" class="btn btn-danger"> Delete</a>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="text-right">
+                <a type="button" class="btn btn-info" asp-action="newrole">New Role</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>

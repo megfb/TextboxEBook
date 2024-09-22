@@ -1,0 +1,41 @@
+﻿@model TextboxBook.UI.Models.CategoryListViewModel
+
+
+@{
+
+    if (User.IsInRole("User") | !User.Identity.IsAuthenticated)
+    {
+        <div class="list-group">
+
+
+
+            @foreach (var category in Model.categoryList)
+            {
+                var css = "list-group-item";
+                if (category.Id == Model.currentCategory)
+                {
+                    css += " active";
+                }
+                <a href="/book/listbook?category=@category.Id" class="@css border-info">@category.Name</a>
+            }
+            <a href="/book/listbook?category=0" class="list-group-item border-info">All</a>
+        </div>
+    }
+    else
+    {
+        <div class="list-group">
+
+            @foreach (var category in Model.categoryList)
+            {
+                var css = "list-group-item";
+                if (category.Id == Model.currentCategory)
+                {
+                    css += " active";
+                }
+                <a href="/admin/listbook?category=@category.Id" class="@css border-info">@category.Name</a>
+            }
+            <a href="/admin/listbook?category=0" class="list-group-item border-info">All</a>
+        </div>
+    }
+}
+

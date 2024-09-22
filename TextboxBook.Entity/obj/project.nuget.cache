@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "clf+SMulCSc=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Mehmet\\Desktop\\TextboxBook\\TextboxBook.Entity\\TextboxBook.Entity.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Mehmet\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\Mehmet\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\Mehmet\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512"
+  ],
+  "logs": []
+}

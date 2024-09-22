@@ -1,0 +1,19 @@
+﻿p.basliktext {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 26px;
+    font-weight: 400;
+    text-align: center
+}
+
+button {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.9;
+    font-weight: 300
+}
+
+p.urunadi {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    color: black
+}

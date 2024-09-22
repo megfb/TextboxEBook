@@ -1,0 +1,124 @@
+﻿@model TextboxBook.UI.Models.OrderDetailViewModel
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/_Layout.cshtml";
+    <link rel="stylesheet" type="text/css" href="~/css/BookList.css" />
+
+}
+
+<div class="container">
+    <div class="row">
+        <div class="table-responsive col-md-8 mx-auto">
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col" class="listebasligi text-center">Id</th>
+                        <th scope="col" class="listebasligi text-center">Img</th>
+                        <th scope="col" class="listebasligi text-center">Name</th>
+                        <th scope="col" class="listebasligi text-center">Price</th>
+                        <th scope="col" class="listebasligi text-center">Quantity</th>
+                        <th scope="col" class="listebasligi text-center">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Order.OrderItem)
+                    {
+                        <tr>
+                            <td class="text-center align-middle">
+                                <p class="img-fluid" style="max-height:64px" src="@item.BookId" />
+
+                            </td>
+                            <td class="text-center align-middle">
+                                <img class="img-fluid" style="max-height:64px" src="@item.Book.BookImg" />
+                            </td>
+                            <td class="text-center align-middle">
+                                <p class="listeyazisi">@item.Book.Name</p>
+                            </td>
+                            <td class="text-center align-middle">
+                                <p class="listeyazisi">@item.Book.UnitPrice</p>
+                            </td>
+                            <td class="text-center align-middle">
+                                <p class="listeyazisi">@item.Quantity</p>
+                            </td>
+                            <td class="text-center align-middle">
+                                <p class="listeyazisi">@(item.Quantity * item.Book.UnitPrice)</p>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <h3 class="listebasligi border-bottom border-top text-center">Order</h3>
+            <div class="border rounded-lg table-responsive">
+                <table class="col-md-12">
+                    <tbody>
+                        <tr class="text-right align-middle">
+                            <td class="text-right listeyazisi   ml-auto align-middle col-md-12">
+                                <b class="listebasligi">Total book fee:</b> @Model.TotalPrice().ToString("c")
+                            </td>
+                        </tr>
+                        <tr class="text-right align-middle">
+                            <td class="text-right listeyazisi  ml-auto align-middle col-md-12">
+                                <b class="listebasligi">Shipping fee:</b> ₺0
+                            </td>
+                        </tr>
+                        <tr class="text-right align-middle">
+                            <td class="text-right listeyazisi   ml-auto align-middle col-md-12">
+                                <b class="listebasligi">Total:</b> @Model.TotalPrice().ToString("c")
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="row">
+        <form class="border rounded-lg my-5 col-md-12 py-3" asp-action="index" method="post">
+            <div class="form-row p-2">
+                <div class="col-md-6">
+                    <p  type="text" class="form-control">@Model.Order.Name</p>
+
+                </div>
+                <div class="col-md-6">
+                    <p type="text" class="form-control">@Model.Order.Surname</p>
+                </div>
+            </div>
+
+            <div class="form-row p-2">
+                <div class="col-md-6">
+                    <p type="text" class="form-control">@Model.Order.Email</p>
+
+                </div>
+                <div class="col-md-6">
+                    <p type="text" class="form-control" >@Model.Order.City</p>
+                </div>
+            </div>
+
+            <div class="form-group p-2">
+                <p class="border p-1 rounded-lg">@Model.Order.Address</p>
+            </div>
+
+            <div class="text-right mb-2">
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-controller="admin" asp-action="listorder" class="btn btn-info">Back</a>
+
+                }
+                else
+                {
+                <a asp-controller="order" asp-action="orderhistory" class="btn btn-info">Back</a>
+
+                }
+
+
+            </div>
+        </form>
+    </div>
+</div>
+
+

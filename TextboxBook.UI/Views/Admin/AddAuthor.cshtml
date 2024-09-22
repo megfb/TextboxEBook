@@ -1,0 +1,40 @@
+﻿@model TextboxBook.UI.Models.AuthorAddViewModel
+@{
+    ViewData["Title"] = "AddAuthor";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row my-3">
+        <div class="col-md-6 mx-auto">
+            <form asp-controller="admin" asp-action="AddAuthor" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="text" asp-for="Author.Name" class="form-control" placeholder="Author Name" />
+                    <span asp-validation-for="Author.Name"></span>
+                </div>
+                <div class="form-group">
+                    <input type="text" asp-for="Author.BirthDate" class="form-control" placeholder="Birth Year" />
+                    <span asp-validation-for="Author.BirthDate"></span>
+
+                </div>
+                <div class="form-group">
+                    <input type="text" asp-for="Author.Biography" class="form-control" placeholder="Biography" />
+                    <span asp-validation-for="Author.Biography"></span>
+
+                </div>
+                <div class="form-group">
+                    <input type="text" asp-for="Author.AuthorImg" class="form-control" placeholder="Image" />
+                    <span asp-validation-for="Author.AuthorImg"></span>
+
+                </div>
+                <div class="row col-md-8 ml-auto">
+                    <a type="button" asp-action="listauthor" class="btn btn-info rounded-pill text-white ml-auto col-md-6">Authors</a>
+                    <button class="btn btn-success rounded-pill text-white ml-auto col-md-6">Add</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+

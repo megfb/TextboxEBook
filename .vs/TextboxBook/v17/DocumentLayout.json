@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Mehmet\\Desktop\\TextboxBook\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{29D632C3-9EB3-414C-A9CA-B125CE606101}|TextboxBook.UI\\TextboxBook.UI.csproj|c:\\users\\mehmet\\desktop\\textboxbook\\textboxbook.ui\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29D632C3-9EB3-414C-A9CA-B125CE606101}|TextboxBook.UI\\TextboxBook.UI.csproj|solutionrelative:textboxbook.ui\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38DC2741-F1A0-4B53-A299-E91C428801ED}|TextboxBook.Dal\\TextboxBook.Dal.csproj|c:\\users\\mehmet\\desktop\\textboxbook\\textboxbook.dal\\concrete\\entityframework\\efcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38DC2741-F1A0-4B53-A299-E91C428801ED}|TextboxBook.Dal\\TextboxBook.Dal.csproj|solutionrelative:textboxbook.dal\\concrete\\entityframework\\efcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EfContext.cs",
+              "DocumentMoniker": "C:\\Users\\Mehmet\\Desktop\\TextboxBook\\TextboxBook.Dal\\Concrete\\EntityFramework\\EfContext.cs",
+              "RelativeDocumentMoniker": "TextboxBook.Dal\\Concrete\\EntityFramework\\EfContext.cs",
+              "ToolTip": "C:\\Users\\Mehmet\\Desktop\\TextboxBook\\TextboxBook.Dal\\Concrete\\EntityFramework\\EfContext.cs",
+              "RelativeToolTip": "TextboxBook.Dal\\Concrete\\EntityFramework\\EfContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAABLAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-22T10:19:48.153Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Startup.cs",
+              "DocumentMoniker": "C:\\Users\\Mehmet\\Desktop\\TextboxBook\\TextboxBook.UI\\Startup.cs",
+              "RelativeDocumentMoniker": "TextboxBook.UI\\Startup.cs",
+              "ToolTip": "C:\\Users\\Mehmet\\Desktop\\TextboxBook\\TextboxBook.UI\\Startup.cs",
+              "RelativeToolTip": "TextboxBook.UI\\Startup.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAACAAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-22T10:19:48.216Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

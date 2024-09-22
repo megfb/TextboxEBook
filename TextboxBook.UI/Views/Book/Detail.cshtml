@@ -1,0 +1,112 @@
+﻿@model TextboxBook.UI.Models.BookViewModel
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/_Layout.cshtml";
+    <link rel="stylesheet" type="text/css" href="~/css/productdetail.css" />
+
+}
+
+
+
+<div class="container-fluid my-5">
+    <div class="row">
+
+        <div class="col-md-12">
+            <form class="col-md-6 mt-5 border rounded-lg py-3 mx-auto">
+                <div class="row border-bottom mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <img class="img-fluid mx-auto d-block" src="@Model.Book.BookImg" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group border-bottom">
+                            <label asp-for="Book.Name" class="d-inline"><b>Book Name:</b></label>
+
+                            <label asp-for="Book.Name">@Model.Book.Name</label>
+                        </div>
+                        <div class="form-group border-bottom">
+                            <label asp-for="Book.ProductionDate" class="d-inline"><b>Year:</b></label>
+                            <label asp-for="Book.ProductionDate" class="d-inline">@Model.Book.ProductionDate</label>
+                        </div>
+                        <div class="form-group border-bottom">
+                            <label asp-for="Book.Author.Name" class="d-inline"><b>Author:</b></label>
+                            <label asp-for="Book.Author.Name" class="d-inline">@Model.Book.Author.Name</label>
+
+                        </div>
+                        <div class="form-group border-bottom">
+                            <label asp-for="Book.Category.Name" class="d-inline"><b>Kind:</b></label>
+                            <label asp-for="Book.Category.Name" class="d-inline">@Model.Book.Category.Name</label>
+                        </div>
+                        <div class="form-group border-bottom">
+                            <label asp-for="Book.Publisher.Name" class="d-inline"><b>Publisher:</b></label>
+                            <label asp-for="Book.Publisher.Name" class="d-inline">@Model.Book.Publisher.Name</label>
+                        </div>
+                        <div class="form-group border-bottom">
+                            <label asp-for="Book.Language.Name" class="d-inline"><b>Language:</b></label>
+                            <label asp-for="Book.Language.Name" class="d-inline">@Model.Book.Language.Name</label>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Book.UnitPrice" class="d-inline"><b>Unit Price:</b></label>
+
+                            <label asp-for="Book.UnitPrice">@Model.Book.UnitPrice</label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label asp-for="Book.Description" class="d-inline"><b>Subject:</b></label>
+                            <label asp-for="Book.Description" class="d-inline">@Model.Book.Description</label>
+                        </div>
+                    </div>
+                </div>
+                <a type="button" asp-action="listbook" value="Back" class="btn btn-warning rounded-pill text-white ml-auto d-block col-md-4">Back</a>
+
+            </form>
+
+        </div>
+    </div>
+    <div class="row my-3">
+        @await Component.InvokeAsync("Comment", new { Id = Model.Book.Id })
+    </div>
+    @*<div class="row">
+        <div class="row col-md-8 mx-auto bg-white my-5 rounded-lg border-bottom">
+            <div class=" baslik mt-3">
+                <p class="basliktext">Other Books in This Category</p>
+            </div>
+            <div class="row mx-auto col-md-12 mt-3">
+
+                @foreach (var books in Model.bookList)
+                {
+                    if (books.CategoryId == Model.book.CategoryId)
+                    {
+
+                        <div class="col-md-3 urundiv pb-3">
+                            <div class="col-md-12 mx-auto py-3 yeniurun  bg-white">
+                                <div class="row col-md-12 mb-3 mx-auto">
+
+                                    <a href="#" class="mx-auto">
+                                        <div class="col-md-12">
+                                            <img src="@books.BookImg" />
+                                            <p class="urunadi">
+                                                <b>@books.BookName</b>
+                                            </p>
+                                            <p class="urunadi"><b>@Model.publisherList[books.PublisherId - 1].PublisherName</b></p>
+                                            <p class="urunadi"><b>@Model.categoryList[books.CategoryId - 1].CategoryName</b></p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="row col-md-12 mx-auto">
+                                    <a asp-controller="book" asp-action="BookDetail" asp-route-Id="@books.Id" class="btn rounded-lg text-center btn-xs col-md-6 ml-auto d-block btn-outline-primary">Details</a>
+                                </div>
+                            </div>
+                        </div>}
+                }
+            </div>
+        </div>
+    </div>*@
+
+</div>
+
