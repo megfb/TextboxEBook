@@ -1,6 +1,6 @@
 # TextboxEBook
 
-TextboxEBook, modern bir kitap satış sitesi örneğidir. Proje .NET Core 3.1, Bootstrap, HTML ve CSS kullanılarak geliştirilmiştir. Katmanlı mimariyle yapılandırılmış olan bu proje; temiz kod yapısı, sürdürülebilirlik ve genişletilebilirlik gibi yazılım prensipleri göz önünde bulundurularak oluşturulmuştur.
+TextboxEBook, modern bir kitap satış sitesi örneğidir. Proje .NET Core 3.1, Bootstrap, HTML ve CSS kullanılarak geliştirilmiştir. Clean architecture yapılandırılmış olan bu proje; temiz kod yapısı, sürdürülebilirlik ve genişletilebilirlik gibi yazılım prensipleri göz önünde bulundurularak oluşturulmuştur.
 
 ---
 
@@ -19,14 +19,12 @@ TextboxEBook, modern bir kitap satış sitesi örneğidir. Proje .NET Core 3.1, 
 | Teknoloji/Kütüphane | Açıklama |
 |---------------------|----------|
 | [.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet/3.1) | Uygulama çatısı ve backend geliştirme |
-| **C#** | Sunucu tarafı dili |
+| **C#** |
 | **ASP.NET Core MVC** | Web uygulaması mimarisi |
 | **Entity Framework Core** | ORM (Veritabanı işlemleri için) |
 | **HTML5** | Web sayfası iskeleti |
 | **CSS3** | Stil ve görünüm |
 | [Bootstrap 4+](https://getbootstrap.com/) | Duyarlı ve modern tasarım için CSS framework |
-| **LINQ** | Veri sorgulama işlemleri |
-
 ---
 
 ##  Proje Mimarisi
